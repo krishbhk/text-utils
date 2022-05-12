@@ -27,6 +27,11 @@ export default function TextForm(props) {
         setText(event.target.value);
     }
 
+    let handleExtraSpace = ()=>{
+        let s = text.split(/[ ]+/);
+        setNewText(s.join(" "));
+    }
+
     let handleCopy = ()=>{
         navigator.clipboard.writeText(newText);
     }
@@ -40,6 +45,7 @@ export default function TextForm(props) {
 
         <button className="btn btn-outline-dark me-2" onClick={handleUCClick}>Convert to Upper Case</button>
         <button className="btn btn-outline-dark me-2" onClick={handleLCClick}>Convert to Lower Case</button>
+        <button className="btn btn-outline-dark me-2" onClick={handleExtraSpace}>Remove extra space</button>
         <button className="btn btn-outline-danger float-end" onClick={handleClearClick}> Clear Text </button>
 
         <TextSummary wordCount={text ? text.split(" ").length : 0} characterCount = {text ? text.length : 0} time={text ? 0.004 * text.split(" ").length : 0} />
