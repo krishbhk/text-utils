@@ -11,15 +11,18 @@ export default function TextForm(props) {
     let handleUCClick = ()=>{
         // console.log('HandleUCClick was clicked');
         setNewText(text.toUpperCase());
+        props.showAlert('Converted to Upper Case', 'success');
     }
 
     let handleLCClick = ()=>{
         setNewText(text.toLowerCase());
+        props.showAlert('Converted to Lower Case', 'success');
     }
 
     let handleClearClick = ()=>{
         setText('');
         setNewText('');
+        props.showAlert('Text Cleared', 'warning');
     }
 
     let handleOnChange = (event)=>{
@@ -30,10 +33,12 @@ export default function TextForm(props) {
     let handleExtraSpace = ()=>{
         let s = text.split(/[ ]+/);
         setNewText(s.join(" "));
+        props.showAlert('Extra Space removed', 'success');
     }
 
     let handleCopy = ()=>{
         navigator.clipboard.writeText(newText);
+        props.showAlert('Text Copied', 'success');
     }
 
   return (
