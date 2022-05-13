@@ -39,23 +39,23 @@ export default function TextForm(props) {
   return (
     <div>
         <div className="mb-3">
-            <h3><label htmlFor="myBox" className="form-label"> {props.heading} </label></h3>
-            <textarea value={text} onChange={handleOnChange} placeholder="Enter your text here" className="form-control" id="myBox" rows="8" />
+            <h3><label htmlFor="myBox" className={`form-label ${props.mode==='dark'?'text-light' : 'text-dark'} `}> {props.heading} </label></h3>
+            <textarea value={text} onChange={handleOnChange} placeholder="Enter your text here" className={`form-control ${props.mode==='dark'? 'bg-dark':'bg-light'}  ${props.mode==='dark'?'text-light' : 'text-dark'}`} id="myBox" rows="8" />
         </div>
 
-        <button className="btn btn-outline-dark me-2" onClick={handleUCClick}>Convert to Upper Case</button>
-        <button className="btn btn-outline-dark me-2" onClick={handleLCClick}>Convert to Lower Case</button>
-        <button className="btn btn-outline-dark me-2" onClick={handleExtraSpace}>Remove extra space</button>
-        <button className="btn btn-outline-danger float-end" onClick={handleClearClick}> Clear Text </button>
+        <button className={`btn ${props.mode==='dark'? ' btn-secondary' : ' btn-outline-dark' } me-2`} onClick={handleUCClick}>Convert to Upper Case</button>
+        <button className={`btn ${props.mode==='dark'? ' btn-secondary' : ' btn-outline-dark' } me-2`} onClick={handleLCClick}>Convert to Lower Case</button>
+        <button className={`btn ${props.mode==='dark'? ' btn-secondary' : ' btn-outline-dark' } me-2`} onClick={handleExtraSpace}>Remove extra space</button>
+        <button className={`btn ${props.mode==='dark'? ' btn-warning' : ' btn-outline-danger' } float-end`} onClick={handleClearClick}> Clear Text </button>
 
-        <TextSummary wordCount={text ? text.split(" ").length : 0} characterCount = {text ? text.length : 0} time={text ? 0.004 * text.split(" ").length : 0} />
+        <TextSummary wordCount={text ? text.split(" ").length : 0} mode={props.mode} characterCount = {text ? text.length : 0} time={text ? 0.004 * text.split(" ").length : 0} />
 
         <div className="mb-3 my-5">
-            <h3><label htmlFor="myBox"> Convereted Text </label></h3>
+            <h3><label htmlFor="myBox" className={`form-label ${props.mode==='dark'?'text-light' : 'text-dark'} `} > Convereted Text </label></h3>
             <div className="card">
-                <div className="card-body">
-                    <button className="btn btn-outline-secondary btn-sm float-end" onClick={handleCopy}>Copy</button>
-                    <div className="card-text">{newText}</div>
+                <div className={`card-body ${props.mode==='dark'? 'bg-dark':'bg-light'} `}>
+                    <button className={`btn ${props.mode==='dark'? ' btn-secondary' : ' btn-outline-secondary' } btn-sm float-end`} onClick={handleCopy}>Copy</button>
+                    <div className={`card-text   ${props.mode==='dark'?'text-light' : 'text-dark'}`}  data-placeholder="(untitled)"  >{newText}</div>
                 </div>
             </div>
         </div>

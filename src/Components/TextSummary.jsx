@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function TextSummary(props) {
   return (
-    <div className="mb-3 my-5">
+    <div className={`  ${props.mode==='dark'?'text-light' : 'text-dark'}  mb-3 my-5`}>
             <h3><label htmlFor="myBox"> Text Summary </label></h3>
-            <div className="card">
+            <div className={`card ${props.mode==='dark'? 'bg-dark':'bg-light'} `}>
                 <div className="card-body">
                     <p className="card-title">Word count: </p>
                     <div className="card-text">{props.wordCount}</div>
