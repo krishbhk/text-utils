@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
+import { Link } from "react-router-dom";
+
 import {FaMoon, FaSearch } from "react-icons/fa";
+// import ButtonGroup from './ButtonGroup';
 
 export default function Navbar(props) {
 
@@ -30,17 +33,17 @@ export default function Navbar(props) {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">{props.title}</a>
+          <Link className="navbar-brand" to="/">{props.title}</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">Home</a>
+                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">{props.about}</a>
+                <Link className="nav-link" to="/about">{props.about}</Link>
               </li>
             </ul>
             <form className="d-flex">
@@ -48,7 +51,13 @@ export default function Navbar(props) {
               <input className={`form-control me-2 bg-${searchBgColor} text-${textColor}`} type="search" placeholder="Search Google" id='query' name='q' aria-label="Search" />
               {/* <button className="btn btn btn-outline-dark btn-secondary" type="submit">Search</button> */}
               <button className="btn btn-outline-light me-2" type="submit" onClick={(e)=>{searchGoogle(e)}}>< FaSearch /></button>
+
               <button className="btn btn-outline-light float-end" onClick={(e)=>{handleModeToggle(e)}}> < FaMoon /> </button>
+    
+              
+              {/* <ButtonGroup mode = {props.mode} handleModeToggle={handleModeToggle}/> */}
+
+
             </form>
           </div>
         </div>

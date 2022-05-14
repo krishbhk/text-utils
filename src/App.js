@@ -1,11 +1,15 @@
-// import logo from './logo.svg';
-// import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
-// import About from "./Components/About";
+import About from "./Components/About";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
 import React, { useState } from 'react'
 import Alert from "./Components/Alert";
+import Footer from "./Components/Footer";
 
 
 function App() {
@@ -39,14 +43,21 @@ function App() {
   }
 
   return (
-  <div>
+  <>
+    <Router>
     <Navbar title='TextUtils' mode = {darkMode} toggleMode={toggleMode}/>
     {alert===null?<></>:<Alert alert={alert}/>}
     <div className="container my-4">
-    <TextForm heading="Enter the Text to analyze" mode = {darkMode} showAlert={showAlert} />
-    {/* <About /> */}
+
+    <Routes>
+        <Route exact path="/" element={<TextForm heading="Enter the Text to analyze" mode = {darkMode} showAlert={showAlert} />} />
+        <Route exact path="/about" element={<About mode={darkMode} />} />
+ 
+    </Routes>
     </div>
-  </div>
+    </Router>
+    <Footer mode={darkMode}/>
+  </>
   );
 }
 
