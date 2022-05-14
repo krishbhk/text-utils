@@ -54,7 +54,7 @@ export default function TextForm(props) {
         <button disabled={text.length===0} className={`btn ${props.mode==='dark'? ' btn-dark' : ' btn-outline-dark' } me-2 my-1`} onClick={handleExtraSpace}>Remove extra space</button>
         <button disabled={text.length===0} className={`btn ${props.mode==='dark'? ' btn-warning' : ' btn-outline-danger' } float-end my-1`} onClick={handleClearClick}> Clear Text </button>
 
-        <TextSummary wordCount={text ? text.split(" ").filter(element=>{return element.length!==0}).length : 0} mode={props.mode} characterCount = {text ? text.length : 0} time={text ? 0.004 * text.split(" ").filter(element=>{return element.length!==0}).length : 0} />
+        <TextSummary wordCount={text ? text.split(/\s+/).filter(element=>{return element.length!==0}).length : 0} mode={props.mode} characterCount = {text ? text.length : 0} time={text ? 0.004 * text.split(/\s+/).filter(element=>{return element.length!==0}).length : 0} />
 
         <div className="mb-3 my-5">
             <h3><label htmlFor="myBox" className={`form-label ${props.mode==='dark'?'text-light' : 'text-dark'} `} > Convereted Text </label></h3>
