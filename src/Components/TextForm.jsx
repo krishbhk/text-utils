@@ -49,9 +49,9 @@ export default function TextForm(props) {
             <textarea value={text} onChange={handleOnChange} placeholder="Enter your text here" className={`form-control ${props.mode==='dark'? 'bg-dark':'bg-light'}  ${props.mode==='dark'?'text-light' : 'text-dark'}`} id="myBox" rows="8" />
         </div>
 
-        <button disabled={text.length===0} className={`btn ${props.mode==='dark'? ' btn-secondary' : ' btn-outline-dark' } me-2 my-1`} onClick={handleUCClick}>Convert to Upper Case</button>
-        <button disabled={text.length===0} className={`btn ${props.mode==='dark'? ' btn-secondary' : ' btn-outline-dark' } me-2 my-1`} onClick={handleLCClick}>Convert to Lower Case</button>
-        <button disabled={text.length===0} className={`btn ${props.mode==='dark'? ' btn-secondary' : ' btn-outline-dark' } me-2 my-1`} onClick={handleExtraSpace}>Remove extra space</button>
+        <button disabled={text.length===0} className={`btn ${props.mode==='dark'? ' btn-dark' : ' btn-outline-dark' } me-2 my-1`} onClick={handleUCClick}>Convert to Upper Case</button>
+        <button disabled={text.length===0} className={`btn ${props.mode==='dark'? ' btn-dark' : ' btn-outline-dark' } me-2 my-1`} onClick={handleLCClick}>Convert to Lower Case</button>
+        <button disabled={text.length===0} className={`btn ${props.mode==='dark'? ' btn-dark' : ' btn-outline-dark' } me-2 my-1`} onClick={handleExtraSpace}>Remove extra space</button>
         <button disabled={text.length===0} className={`btn ${props.mode==='dark'? ' btn-warning' : ' btn-outline-danger' } float-end my-1`} onClick={handleClearClick}> Clear Text </button>
 
         <TextSummary wordCount={text ? text.split(" ").filter(element=>{return element.length!==0}).length : 0} mode={props.mode} characterCount = {text ? text.length : 0} time={text ? 0.004 * text.split(" ").filter(element=>{return element.length!==0}).length : 0} />

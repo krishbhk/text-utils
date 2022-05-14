@@ -18,16 +18,44 @@ function App() {
 
   const [alert, setAlert] = useState(null);
 
-  const toggleMode = ()=>{
-    // setDarkMode(darkMode==='light'?'dark':'light');
-    if (darkMode === 'light') {
+  function capt(string){
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+  const removeBodyClass = ()=>{
+    document.body.classList.remove('bg-light');
+    document.body.classList.remove('bg-dark');
+    document.body.classList.remove('bg-warning');
+    document.body.classList.remove('bg-danger');
+    document.body.classList.remove('bg-primary');
+  }
+
+  const toggleMode = (cls)=>{
+    removeBodyClass();
+    if (cls===null && darkMode === 'light') {
       setDarkMode('dark');
       document.body.style.backgroundColor= '#16181b';
       showAlert('Dark Mode has been enabled', 'dark');
-    } else {
+    } else if (cls===null && darkMode!=='light') {
       setDarkMode('light');
       document.body.style.backgroundColor= '#ffffff';
-      showAlert('Dark Mode has been disabled', 'dark');
+      showAlert('Light Mode has been enabled', 'dark');
+    } else if(cls === 'danger') {
+      setDarkMode('danger');
+      document.body.style.backgroundColor= '#eda9a4';
+      showAlert(`Custom theme set to ${capt(cls)}`, 'dark');
+    } else if(cls === 'warning') {
+      setDarkMode('warning');
+      document.body.style.backgroundColor= '#ede6a4';
+      showAlert(`Custom theme set to ${capt(cls)}`, 'dark');
+    } else if(cls === 'primary') {
+      setDarkMode('primary');
+      document.body.style.backgroundColor= '#a4abed';
+      showAlert(`Custom theme set to ${capt(cls)}`, 'dark');
+    } else if(cls === 'success') {
+      setDarkMode('success');
+      document.body.style.backgroundColor= '#a4edba';
+      showAlert(`Custom theme set to ${capt(cls)}`, 'dark');
     }
   }
 

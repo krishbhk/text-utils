@@ -6,7 +6,7 @@ export default function About(props) {
 
   return (
     
-    <div className={`container  ${props.mode==='dark'? '#16181b':'bg-light' } `} style={{height:' 100%'}}>
+    <div className={`container  bg-${props.mode}-500 `} style={{height:' 100%'}}>
       <h1 className={`my-4 ${props.mode==='dark'?'text-light' : 'text-dark'} `}>About Us</h1>
       <div className="accordion" id="accordionExample">
   <div className={` accordion-item  ${props.mode==='dark'? 'bg-dark':'bg-light' }  ${props.mode==='dark'?'text-light' : 'text-dark'}  `}>
